@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
+
 #import "MASShortcut+UserDefaults.h"
+
 
 #import "ChromeTabAdapter.h"
 #import "SafariTabAdapter.h"
@@ -73,7 +75,7 @@
 - (void)removeAllItems
 {
     NSInteger count = statusMenu.itemArray.count;
-    for (int i = 0; i < count - 3; i++) {
+    for (int i = 0; i < count - 4; i++) {
         [statusMenu removeItemAtIndex:0];
     }
 }
@@ -113,7 +115,7 @@
     [self refreshTabsForSafari:safariApp];
 
     
-    if ([statusMenu numberOfItems] == 3) {
+    if ([statusMenu numberOfItems] == 4) {
         NSMenuItem *item = [statusMenu insertItemWithTitle:@"No applicable tabs open :(" action:nil keyEquivalent:@"" atIndex:0];
         [item setEnabled:NO];
     }
