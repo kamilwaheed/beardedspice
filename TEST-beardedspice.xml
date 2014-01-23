@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+     xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>BeardedSpice Changelog - Final releases</title>
+    <link>http://beardedspice.com/updates/beardedspice.xml</link>
+    <description>Stable releases and bugfixes.</description>
+    <language>en</language>
+    <item>
+      <title>Version 0.2.0</title>
+      <description>testing12</description>
+      <!--<pubDate>Wed, 06 Jul 2011 19:05:28 -0700</pubDate>-->
+      <enclosure url="https://github.com/beardedspice/beardedspice/raw/tr.sparkle/BeardedSpice-0.2.0.zip"
+                 sparkle:version="999"
+                 sparkle:shortVersionString="0.2.0"
+                 length="1314458"
+                 type="application/octet-stream"
+                 sparkle:dsaSignature="MCwCFCn1Iw8hYNKoh8eF9gQ1HWPVLM8jAhQXYjQMWvg2UAYuwxDu6RmwbsNroQ=="/>
+    </item>
+  </channel>
+</rss>

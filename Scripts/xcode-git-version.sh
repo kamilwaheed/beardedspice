@@ -31,7 +31,5 @@ INFO_PLIST="${PROJECT_DIR}/BeardedSpice/BeardedSpice-Info.plist"
 # problems.
 # Thanks to @amrox for pointing out the issue and fix.
 VERSION=$(git --git-dir="${PROJECT_DIR}/.git" --work-tree="${PROJECT_DIR}" rev-list master | wc -l)
-echo "*****"
-echo ${VERSION}
 # defaults write $INFO_PLIST CFBundleShortVersionString $SHORT_VERSION
 defaults write $INFO_PLIST CFBundleVersion $VERSION

@@ -12,14 +12,16 @@ PRIVATE_KEY_PATH=${HOME}/.ssh/bs-private.pem
 
 # set up your app name, version number, and background image file name
 APP_NAME="BeardedSpice"
-VERSION="0.1.0"
 
 # you should not need to change these
 APP_EXE="${APP_NAME}.app/Contents/MacOS/${APP_NAME}"
 
 pushd ../ > /dev/null
-
 CWD=`pwd`
+
+INFO_PLIST="${CWD}/BeardedSpice/BeardedSpice-Info.plist"
+VERSION=$(defaults read $INFO_PLIST CFBundleShortVersionString)
+
 RESOURCE_DIR="${CWD}/BeardedSpice"
 BUILD_DIR="${CWD}/build/Release"
 STAGING_DIR="${CWD}/build/packaged"      # we copy all our stuff into this dir
@@ -52,15 +54,20 @@ fi
 
 # . perform any other stripping/compressing of libs and executables
 ZIP_NAME=${APP_NAME}-${VERSION}.zip
-zip ${ZIP_NAME} ${APP_NAME}.app
+zip -r ${ZIP_NAME} ${APP_NAME}.app
 
 echo "Signing zip file."
-echo "*** COPYING SIGNATURE TO CLIPBOARD ***"
+echo "*** Signature ***"
+echo "(Copying to clipboard)"
 SIG=`openssl dgst -sha1 -binary < "${ZIP_NAME}" | openssl dgst -dss1 -sign "${PRIVATE_KEY_PATH}" | openssl enc -base64`
 echo $SIG
 echo $SIG | pbcopy
 
+echo "*** File size ***"
+echo $(stat -c %s ${ZIP_NAME})
+
 cp ${ZIP_NAME} ${CWD}
 popd > /dev/null # STAGING_DIR
+
 popd > /dev/null # ROOT_DIR
 echo 'Done.'
